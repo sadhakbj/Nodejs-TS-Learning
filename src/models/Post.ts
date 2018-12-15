@@ -13,7 +13,7 @@ let PostSchema: Schema = new Schema({
         unique: true,
         lowercase: true
     },
-    details: {
+    body: {
         type: String,
         default: '',
         required: true

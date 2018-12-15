@@ -17,8 +17,11 @@ class UserRouter {
      * Initialize the routes.
      */
     initialize() {
-        this.router.get('/', UserController.getAll)
-        this.router.get('/:slug', UserController.findBySlug)
+        this.router.get('/', UserController.allUsers)
+        this.router.get('/:username', UserController.findByUsername)
+        this.router.post('/', UserController.store)
+        this.router.put('/:username', UserController.update)
+        this.router.delete('/:username', UserController.destroy)
     }
 }
 
