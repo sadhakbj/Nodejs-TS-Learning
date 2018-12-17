@@ -8,6 +8,7 @@ let UserSchema: Schema = new Schema({
     },
     email: {
         type: String,
+        default: '',
         required: true,
         unique: true
     },

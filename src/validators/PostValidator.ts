@@ -1,35 +1,26 @@
 import { Request, Response, NextFunction } from 'express'
 import * as Joi from 'joi'
 
+import FormValidator from './FormValidator'
+
 /**
  * Postvalidator class.
  */
-class PostValidator {
+export default class PostValidator extends FormValidator {
+
+    joi
+
+    constructor() {
+        super(Joi)
+        this.joi = Joi
+    }
+
     /**
-     * Validate the post inputdata.
-     * @param req 
-     * @param res 
-     * @param next 
+     * 
      */
-    public validate(req: Request, res: Response, next: NextFunction) {
-        const inputdata = req.body
-
-        const schema = Joi.object().keys({
-            title: Joi.string().email().required(),
+    public rules = () => {
+        return this.joi.object().keys({
+            title: this.joi.string().email().required(),
         })
-
-        Joi.validate(inputdata, schema, (error, value) => {
-            if (error) {
-                return res.json({
-                    status: 422,
-                    error
-                })
-            } else {
-                next()
-            }
-        })
-        next()
     }
 }
-
-export default new PostValidator()

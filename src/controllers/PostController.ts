@@ -6,8 +6,6 @@ import * as Joi from 'joi'
  * PostController class
  */
 class PostController {
-
-
     /**
      * Find all the posts.
      * @param req 
